@@ -93,6 +93,3 @@ module vent_six()
 
 vent_six();
 
-
-
-
