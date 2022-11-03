@@ -143,12 +143,10 @@ module grill_body()
  
 hex_color = "#404a13";    
 color(hex_color)
-difference()
+difference()//fixes extruded circle in top notch.  Put this into vent_six ????????????
     {
     vent_six();
     translate([0,20.955])
         cube([2.540,2.540,20], center = true);
     }
 grill_body();
-
-
