@@ -3,8 +3,9 @@
     grill v2.0
 */
 
-$fa = 0.1;
-$fs = 0.4;
+//$fa = 0.1;
+//$fs = 0.4;
+$fn= 80;
 
 /*
     Tamiya hex colors
@@ -149,4 +150,90 @@ difference()//fixes extruded circle in top notch.  Put this into vent_six ??????
     translate([0,20.955])
         cube([2.540,2.540,20], center = true);
     }
+   
 grill_body();
+
+module vent_connector()
+    {
+        hex_color = "#404a13";
+        color(hex_color)
+        difference()
+            {
+                color(hex_color)
+                cube([8.026,6.353,3], center = false);
+                
+                translate([0,5.353,2])
+                    cube([8.026,6.353,3]);
+                translate([0,-5.353,2])
+                    cube([8.026,6.353,3]);
+            }
+
+        color(hex_color)
+            rotate([0,90,0])
+                translate([-2,1,0])
+                    cylinder(8.026, 1, center = false);
+        color(hex_color)
+            rotate([0,90,0])
+                translate([-2,5.353,0])
+                    cylinder(8.026, 1, center = false);
+    }
+
+translate([8.026,-15.24,0])
+    vent_connector();
+
+translate([-16.052,-15.24,0])
+    vent_connector();
+
+module grill_hinge()
+    {
+        hex_color = "#404a13";
+        difference()
+            {
+                color(hex_color)
+                    cube([7.75,5.25,1], center = false);
+                color(hex_color)
+                    translate([-.001,3.50,-1])
+                        cube([1.751,1.751,5], center = false);
+                color(hex_color)
+                    translate([6.001,3.50,-1])
+                        cube([1.751,1.751,5], center = false);
+            }
+        color(hex_color)
+            translate([1.75,3.5,0])
+                cylinder(1, d = 3.5, center = false);
+        color(hex_color)
+            translate([6,3.5,0])
+                cylinder(1, d = 3.5, center = false);
+        color(hex_color)
+            translate([0,0,0.4])
+                cube([7.75,2.6,1.7], center = false);//1.3 r
+        color(hex_color)
+            rotate([0,90,0])
+                translate([-2.2,1.3,0])
+                    cylinder(7.75, d = 2.6, center = false);
+            
+        p0 = [0,0];
+        p1 = [0,3.55];
+        p2 = [2.42,0];
+        p3 = [0,0];
+        points = [p0, p1, p2, p3,];
+            translate([4.25,1.7,0.999])
+                color(hex_color)
+                    rotate([0,-90,0])
+                        linear_extrude(height=0.75)
+                            polygon(points);
+                            
+        color(hex_color)
+            translate([1.75,3.9,0])
+                cylinder(2, d = 1.5, center = false);
+        color(hex_color)
+            translate([6,3.9,0])
+                cylinder(2, d = 1.5, center = false);
+        
+    }
+
+translate([25.905,-23.749,2.75])
+    grill_hinge();
+    
+translate([-33.655,-23.749,2.75])
+    grill_hinge();
