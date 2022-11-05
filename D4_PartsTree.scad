@@ -14,6 +14,8 @@ $fn= 80;
     #ff7f00     Orange      X-6
 */
 
+module d4_grill(){
+
 module vent()
     {
     y = 6;//38mm
@@ -141,7 +143,7 @@ module grill_body()
             translate([-42.418,15.197])
                 cylinder(3,5.842,5.842,false);
     }
- //*
+ 
 hex_color = "#404a13";    
 color(hex_color)
 difference()//fixes extruded circle in top notch.  Put this into vent_six ????????????
@@ -150,9 +152,11 @@ difference()//fixes extruded circle in top notch.  Put this into vent_six ??????
     translate([0,20.955])
         cube([2.540,2.540,20], center = true);
     }
-   
+    
+//* 
 grill_body();
 //*/
+    
 module vent_connector()
     {
         hex_color = "#404a13";
@@ -260,9 +264,13 @@ translate([-36.449,-19.939,-7.620])
     slot_connectors();
 //*/
 
+}
 
-
-
+hex_color = "#ff7f00";
+    color(hex_color)
+        rotate([10,70,30])
+            translate([0,0,0])
+                d4_grill();
 
 
 
