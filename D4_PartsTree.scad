@@ -141,7 +141,7 @@ module grill_body()
             translate([-42.418,15.197])
                 cylinder(3,5.842,5.842,false);
     }
- 
+ //*
 hex_color = "#404a13";    
 color(hex_color)
 difference()//fixes extruded circle in top notch.  Put this into vent_six ????????????
@@ -152,7 +152,7 @@ difference()//fixes extruded circle in top notch.  Put this into vent_six ??????
     }
    
 grill_body();
-
+//*/
 module vent_connector()
     {
         hex_color = "#404a13";
@@ -177,13 +177,13 @@ module vent_connector()
                 translate([-2,5.353,0])
                     cylinder(8.026, 1, center = false);
     }
-
+//*
 translate([8.026,-15.24,0])
     vent_connector();
 
 translate([-16.052,-15.24,0])
     vent_connector();
-
+//*/
 module grill_hinge()
     {
         hex_color = "#404a13";
@@ -231,9 +231,56 @@ module grill_hinge()
                 cylinder(2, d = 1.5, center = false);
         
     }
-
+//*
 translate([25.905,-23.749,2.75])
     grill_hinge();
     
 translate([-33.655,-23.749,2.75])
     grill_hinge();
+//*/
+    
+module slot_connectors()
+    {
+        hex_color = "#404a13";
+        color(hex_color)
+        difference()
+            {
+                cube([1.778,7.493,7.820], center = false);//added .200 to z to merge
+                rotate([0,90,0])
+                    translate([-3.8735,3.7465,-5])
+                        cylinder(10, d = 3.175, center = false);
+                translate([-2,2.159,-.001])
+                    cube([5,3.175,3.875], center = false);
+            }
+    }
+//*
+translate([34.798,-19.939,-7.620])
+    slot_connectors();
+translate([-36.449,-19.939,-7.620])
+    slot_connectors();
+//*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
