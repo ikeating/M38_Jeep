@@ -1,2 +1,2 @@
 # Tamiya_M38_Wild_Willy
-![Alt text](/grill.png "D4 Parts Tree")
+![Alt text](/Wild_Willy.png "M38")

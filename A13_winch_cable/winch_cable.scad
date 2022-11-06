@@ -128,6 +128,7 @@ section_points = circle_points(Wire_radius, 360/$fn);
 
 loop_points = loop_points(Step ,360* Coils + Step);
 // echo(loop_points);
+
 tube_points = tube_points(loop_points,section_points);
 // echo(tube_points);
 
