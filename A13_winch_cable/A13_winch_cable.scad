@@ -1,7 +1,7 @@
 /*
     Isaiah Keating
 */
-$fn= 80;
+$fn= 30;
 include <winch_cable.scad>
 /*
     winch_cable(Radius=(radius of spring), Wire_radius=(radius of wire),
@@ -21,11 +21,11 @@ module A13_winch_cable()
     {
         module cable_drum()
             {
-                hex_color = "#5c6164";
+                hex_color = "#020202";
                 rotate([0,90,0])
                     color(hex_color)
                         translate([0,0,0])
-                            cylinder(h=20.066, r=6.0325, center = true);
+                            cylinder(h=21.066, r=6.0325, center = true);//added 1 to h for join
                 color(hex_color)
                 minkowski()
                     {
@@ -44,6 +44,14 @@ module A13_winch_cable()
                                 //cylinder(h=1.143, r=8.89, center = true);//starting dim
                                     sphere(r = 0.5715);
                     }
+                rotate([0,90,0])
+                    color(hex_color)
+                        translate([0,0,-5.0165])
+                            cylinder(h=10.033, r=7.1325, center = true);
+                rotate([0,90,0])
+                    color(hex_color)
+                        translate([0,0,-14.986])
+                            cylinder(h=9.906, r=8.89, center = true);
             }
             
         module cable()
@@ -51,28 +59,21 @@ module A13_winch_cable()
                 hex_color = "#5c6164";
                 rotate([0,90,0])
                     color(hex_color)
-                        translate([0,0,9])
+                        translate([0,0,9.4])
                             winch_cable(Radius= 6.0325, Wire_radius=.55,
-                                        Pitch= -1.1, Coils = 16, Step=2, $fn= 20);
+                                        Pitch= -1.1, Coils = 10, Step=4, $fn= 30);
                 rotate([0,90,0])
                     color(hex_color)
-                        translate([0,0,-9])
+                        translate([0,0,-9.4])
                             winch_cable(Radius= 7.1325, Wire_radius=.55,
-                                        Pitch= 1.1, Coils = 8, Step=2, $fn= 20);
+                                        Pitch= 1.1, Coils = 8.5, Step=4, $fn= 30);
             }
             
             cable_drum();
-            cable();
+            rotate([180,0,0])
+                cable();
     }
     
 //A13_winch_cable();
-
-
-
-
-
-
-
-
 
 /////////////////////////////////////////////////////////
