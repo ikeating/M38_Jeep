@@ -2,7 +2,10 @@
     Isaiah Keating
 */
 $fn= 30;
+$fa=1;
+$fs=0.4;
 include <winch_cable.scad>
+use <MCAD/boxes.scad>
 /*
     winch_cable(Radius=(radius of spring), Wire_radius=(radius of wire),
                 Pitch=(Pitch of spring - distance between coils),
@@ -52,6 +55,9 @@ module A13_winch_cable()
                     color(hex_color)
                         translate([0,0,-14.986])
                             cylinder(h=9.906, r=8.89, center = true);
+                color(hex_color)
+                    translate([14.449,-0.9065,-0.635])
+                        roundedBox(size=[8.832,14.837,18.796],radius=.75,sidesonly=false);
             }
             
         module cable()
