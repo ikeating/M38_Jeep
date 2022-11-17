@@ -2,7 +2,7 @@
     Isaiah Keating
 */
 
-include <D4_grill/D4_PartsTree.scad>
+include <D4_grill/grill.scad>
 
 include <A13_winch_cable/A13_winch_cable.scad>
 
@@ -14,7 +14,7 @@ rotate([90,0,0])
         
 rotate([90,0,0])
     translate([0,0,0])
-        D4_PartsTree();
+        grill();
 
 translate([0,90,0])
     body();
