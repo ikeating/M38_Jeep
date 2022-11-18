@@ -84,7 +84,67 @@ module body()
                                     polyRoundExtrude(radiiPoints4,141.161,0,0,fn=30);
                     }
             }
+            
         rear_panels();
+            
+        module hood()
+            {
+                difference()
+                    {
+                        difference()
+                            {
+                                radiiPoints5=[
+                                    [0   , -20, 0],
+                                    [49.911, -20     , 0],
+                                    [49.911, 0     , 0],
+                                    [55.7911, 64.5922 , 0],
+                                    [55.7911, 84.5922 , 0],
+                                    [-55.7911, 84.5922 , 0],
+                                    [-55.7911     , 64.5922 , 0],
+                                    [-49.911     , 0 , 0],
+                                    [-49.911     , -20 , 0],
+                                ];
+                                rotate([0,0,0])
+                                    color(olive_drab)
+                                        translate([0,0,0])
+                                            polyRoundExtrude(radiiPoints5,15.621,7.8105,0,fn=30);
+
+                                translate([0,-20,0])
+                                    color(olive_drab)
+                                        cube([120,40,40], center = true);
+                                translate([0,84.5922,0])
+                                    color(olive_drab)
+                                        cube([120,40,40], center = true);
+                            }
+                        rotate([0,0,90])
+                            color(olive_drab)
+                                translate([27.8892,0,8])
+                                    cylinder(h = 20, r = 3.3274, center = true);
+                        rotate([0,0,90])
+                            color(olive_drab)
+                                translate([3.175,0,8])
+                                    cylinder(h = 20, r = .635, center = true);
+                        radiiPoints5=[
+                            [0   , -20, 0],
+                            [48.26, -20     , 0],
+                            [48.26, 0     , 0],
+                            [54.1401, 64.5922 , 0],
+                            [54.1401, 84.5922 , 0],
+                            [-54.1401, 84.5922 , 0],
+                            [-54.1401     , 64.5922 , 0],
+                            [-48.26     , 0 , 0],
+                            [-48.26     , -20 , 0],
+                        ];
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([0,0,-1.651])
+                                    polyRoundExtrude(radiiPoints5,15.621,7.8105,0,fn=30);
+                }
+            }
+            
+        translate([-10,-100,13])  
+            hood();
+            
     }
     
 //body();
