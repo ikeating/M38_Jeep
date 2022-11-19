@@ -10,11 +10,11 @@ include </Users/isaiahkeating/Desktop/Cad/Round-Anything/polyround.scad>
 //extrudeWithRadius(45,-10,-10,20)polygon(polyRound(radiiPoints,60));
 
 $fn = 30;
-brown =             "#4e2207";//            X-9
-olive_drab =        "#404a13";//       XF-62
-orange =            "#ff7f00";//           X-6
+brown =             "#4e2207";//    X-9
+olive_drab =        "#404a13";//    XF-62
+orange =            "#ff7f00";//    X-6
 metallic_grey =     "#5c6164";//    XF-56
-semi_gloss_black =  "#020202";// X-18   ???
+semi_gloss_black =  "#020202";//    X-18 ?
 
 module body()
     {
@@ -83,6 +83,33 @@ module body()
                                 translate([-5,-25,-83])
                                     polyRoundExtrude(radiiPoints4,141.161,0,0,fn=30);
                     }
+                    radiiPoints6=[
+                        [0,0,0],
+                        [0,27.1526,0],
+                        [-13.716,27.1526,6.858],
+                        [-13.716,40.8686,0],
+                        [-53.1368,40.8686,0],
+                        [-30.988,0,0],
+                    ];
+                    rotate([90,0,110])
+                        color(olive_drab)
+                            translate([25,-25,-81.5])
+                                polyRoundExtrude(radiiPoints6,2,0,0,fn=30);
+                    radiiPoints7=[
+                        [0,0,0],
+                        [0,27.1526,0],
+                        [-13.716,27.1526,6.858],
+                        [-13.716,40.8686,0],
+                        [-53.1368,40.8686,0],
+                        [-30.988,0,0],
+                    ];
+                    rotate([90,0,70])
+                        color(olive_drab)
+                            translate([17,-25,56])
+                                polyRoundExtrude(radiiPoints7,2,0,0,fn=30);
+                    //rotate([90,0,90])
+                        //translate([74,-38,-12.4195])
+                            //#cylinder(h = 145.161, r = 45.526198, center = true);//rear wheel well tool
             }
             
         rear_panels();
@@ -142,7 +169,7 @@ module body()
                 }
             }
             
-        translate([-10,-100,13])  
+        translate([-12.5,-115,13])  
             hood();
             
     }
