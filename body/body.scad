@@ -172,8 +172,124 @@ module body()
         translate([-12.5,-115,13])  
             hood();
             
-    }
     
+        module front_fenders()
+            {
+                module fender()
+                {
+                difference()
+                    {
+                        radiiPoints9=[
+                            [0,0,13.4874],
+                            [61.3918,0,0],
+                            [61.3918,36.9748,0],//add 10 to Y
+                            [0,36.9748,0],//add 10 to Y
+                        ];
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([0,0,0])
+                                    polyRoundExtrude(radiiPoints9,5.969,3,0,fn=30);
+                        radiiPoints10=[
+                            [0,0,13.4874],
+                            [65,0,0],
+                            [65,36.9748,0],//add 10 to Y
+                            [0,36.9748,0],//add 10 to Y
+                        ];
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([1.651,1.651,-1.651])
+                                    polyRoundExtrude(radiiPoints10,5.969,3,0,fn=30);
+                        translate([-1,26.9748,-10])
+                            color(olive_drab)
+                                cube([80, 20, 20]);
+                    }
+                rotate([0,60,0])
+                    translate([24,0,49.5])
+                        difference()
+                    {
+                        radiiPoints11=[
+                            [0,0,0,],
+                            [61.3918,0,0],
+                            [61.3918,36.9748,0],//add 10 to Y
+                            [0,36.9748,0],//add 10 to Y
+                        ];
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([0,0,0])
+                                    polyRoundExtrude(radiiPoints11,5.969,3,0,fn=30);
+                        radiiPoints12=[
+                            [0,0,0],
+                            [65,0,0],
+                            [65,36.9748,0],//add 10 to Y
+                            [0,36.9748,0],//add 10 to Y
+                        ];
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([0,1.651,-1.651])
+                                    polyRoundExtrude(radiiPoints12,5.969,3,0,fn=30);
+                        translate([-1,26.9748,-10])
+                            color(olive_drab)
+                                cube([62.3918, 20, 20]);
+
+                    }
+                translate([37.15,0,-34.8996])
+                difference()
+                    {
+                        radiiPoints13=[
+                            [0,0,0],
+                            [61.3918,0,0],
+                            [61.3918,36.9748,0],//add 10 to Y
+                            [0,36.9748,0],//add 10 to Y
+                        ];
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([0,0,0])
+                                    polyRoundExtrude(radiiPoints13,5.969,3,0,fn=30);
+                        radiiPoints14=[
+                            [0,0,0],
+                            [61.3918,0,0],
+                            [61.3918,36.9748,0],//add 10 to Y
+                            [0,36.9748,0],//add 10 to Y
+                        ];
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([-1.651,1.651,-1.651])
+                                    polyRoundExtrude(radiiPoints14,5.969,3,0,fn=30);
+                        translate([0,26.9748,-10])
+                            color(olive_drab)
+                                cube([80, 20, 20]);
+                        translate([-1,-1,-10])
+                            color(olive_drab)
+                                cube([41.1828, 40, 20]);
+                    }
+            }
+
+        difference()
+            {
+                fender();
+
+                        radiiPoints15=[
+                            [0,0,0],
+                            [65,0,0],
+                            [65,36.9748,0],//add 10 to Y
+                            [0,36.9748,0],//add 10 to Y
+                        ];
+                            rotate([0,60,0])
+                    translate([30,0,49.5])
+                            color(olive_drab)
+                                translate([0,1.651,-1.651])
+                                    polyRoundExtrude(radiiPoints15,5.969,3,0,fn=30);
+                        translate([70,-2,-75.7682])
+                            color(olive_drab)
+                                cube([30, 30, 40.8686]);
+            }
+
+            
+        }
+        rotate([0,0,90])
+            translate([-113,-63,7])
+            front_fenders();
+    } 
 //body();
     
 ///////////////////////////////////////////////////////////////////////////////////////
