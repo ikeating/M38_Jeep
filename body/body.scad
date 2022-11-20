@@ -127,7 +127,7 @@ module body()
                             [-55.7911, 84.5922 , 0],
                             [-55.7911     , 64.5922 , 0],
                             [-49.911     , 0 , 0],
-                            [-47.911     , -20 , 0],// changed X to render.....
+                            [-40.911     , -20 , 0],// changed X to render.....
                         ];
                         rotate([0,0,0])
                             color(olive_drab)
@@ -156,7 +156,7 @@ module body()
                             [-54.1401, 84.5922 , 0],
                             [-54.1401     , 64.5922 , 0],
                             [-48.26     , 0 , 0],
-                            [-47.26     , -20 , 0],// changed X to render.....
+                            [-40.26     , -20 , 0],// changed X to render.....
                         ];
                         rotate([0,0,0])
                             color(olive_drab)
@@ -275,7 +275,7 @@ module body()
                             color(olive_drab)
                                 cube([30, 30, 40.8686]);
                     }
-        }
+            }
         
         rotate([0,0,90])
             translate([-113,-63,7])
@@ -284,8 +284,38 @@ module body()
             rotate([0,0,90])
                 translate([-113,-88,7])
                     front_fenders();
+        
+        module rear_deck()
+            {
+                difference()
+                    {
+                        radiiPoints17=[
+                            [0,0,0],
+                            [96.52,0,0],
+                            [96.52,26.67,13.335],
+                            [0,26.67,0],
+                        ];
+                        rotate([90,0,-90])
+                            color(olive_drab)
+                                translate([-126,-11.1252,-58.5])
+                                    polyRoundExtrude(radiiPoints17,141.478,0,0,fn=30);
+                        radiiPoints18=[
+                            [0,0,0],
+                            [96.52,0,0],
+                            [96.52,26.67,13.335],
+                            [0,26.67,0],
+                        ];
+                        rotate([90,0,-90])
+                            color(olive_drab)
+                                translate([-127.9,-13.0252,-59.5])
+                                    polyRoundExtrude(radiiPoints18,145,0,0,fn=30);
+                    }
+            }
+            
+        rear_deck();
+            
     }
     
-body();
+//body();
     
 ///////////////////////////////////////////////////////////////////////////////////////
