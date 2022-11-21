@@ -7,7 +7,7 @@ include <D4_grill/grill.scad>
 include <A13_winch_cable/A13_winch_cable.scad>
 
 include <body/body.scad>
-
+$fn = 30;
 rotate([90,0,0])
     translate([-2.5,-12,35.033])
         A13_winch_cable();

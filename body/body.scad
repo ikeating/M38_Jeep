@@ -9,7 +9,10 @@ include </Users/isaiahkeating/Desktop/Cad/Round-Anything/polyround.scad>
 // extrudeWithRadius example
 //extrudeWithRadius(45,-10,-10,20)polygon(polyRound(radiiPoints,60));
 
-$fn = 30;
+face_number = 10;//rendered at 7,8,10
+$fn = face_number;//number of faces
+$fs = 2;//default segment length - filament/2
+$fa = 12;//minimum of degree per segment
 brown =             "#4e2207";//    X-9
 olive_drab =        "#404a13";//    XF-62
 orange =            "#ff7f00";//    X-6
@@ -33,7 +36,7 @@ module body()
                             rotate([90,0,90])
                                 color(brown)
                                     translate([0,0,0])
-                                        polyRoundExtrude(radiiPoints,44.704,5,5,fn=30);
+                                        polyRoundExtrude(radiiPoints,44.704,5,5,fn=face_number);
                         radiiPoints2=[
                             [-10   , 10.795, 0],
                             [43.561, 5     , 0],
@@ -43,11 +46,21 @@ module body()
                             rotate([90,0,90])
                                 color(brown)
                                     translate([0,0,3])
-                                        polyRoundExtrude(radiiPoints2,38.704,5,5,fn=30);
+                                        polyRoundExtrude(radiiPoints2,38.704,5,5,fn=face_number);
                             rotate([0,0,90])
                                 color(brown)
                                     translate([4.445,-22.352,0])
                                         cylinder(h = 20, r = 1.5, center = true);
+                     /*   radiiPoints19=[
+                            [0,0,0],
+                            [96.52,0,0],
+                            [96.52,26.67,13.335],
+                            [0,26.67,0],
+                        ];
+                        rotate([90,0,-90])
+                            color(olive_drab)
+                                translate([-127.9,-13.0252,-59.5])
+                                    polyRoundExtrude(radiiPoints19,60,0,0,fn=face_number); */
                     }
             }
             
@@ -71,7 +84,7 @@ module body()
                         rotate([90,0,90])
                             color(olive_drab)
                                 translate([-5,-25,-85])
-                                    polyRoundExtrude(radiiPoints3,145.161,0,0,fn=30);
+                                    polyRoundExtrude(radiiPoints3,145.161,0,0,fn=face_number);
                         radiiPoints4=[
                             [-1,-1,0],
                             [130.334,-1,0],
@@ -81,7 +94,7 @@ module body()
                         rotate([90,0,90])
                             color(olive_drab)
                                 translate([-5,-25,-83])
-                                    polyRoundExtrude(radiiPoints4,141.161,0,0,fn=30);
+                                    polyRoundExtrude(radiiPoints4,141.161,0,0,fn=face_number);
                     }
                     radiiPoints6=[
                         [0,0,0],
@@ -94,7 +107,7 @@ module body()
                     rotate([90,0,110])
                         color(olive_drab)
                             translate([25,-25,-81.5])
-                                polyRoundExtrude(radiiPoints6,2,0,0,fn=30);
+                                polyRoundExtrude(radiiPoints6,2,0,0,fn=face_number);
                     radiiPoints7=[
                         [0,0,0],
                         [0,27.1526,0],
@@ -106,7 +119,7 @@ module body()
                     rotate([90,0,70])
                         color(olive_drab)
                             translate([17,-25,56])
-                                polyRoundExtrude(radiiPoints7,2,0,0,fn=30);
+                                polyRoundExtrude(radiiPoints7,2,0,0,fn=face_number);
                     //rotate([90,0,90])
                         //translate([74,-38,-12.4195])
                             //#cylinder(h = 145.161, r = 45.526198, center = true);//rear wheel well tool
@@ -132,7 +145,7 @@ module body()
                         rotate([0,0,0])
                             color(olive_drab)
                                 translate([0,0,0])
-                                    polyRoundExtrude(radiiPoints5,15.621,7.8105,0,fn=30);
+                                    polyRoundExtrude(radiiPoints5,15.621,7.8105,0,fn=face_number);
                         translate([0,-20,0])
                             color(olive_drab)
                                 cube([120,40,40], center = true);
@@ -161,7 +174,7 @@ module body()
                         rotate([0,0,0])
                             color(olive_drab)
                                 translate([0,0,-1.651])
-                                    polyRoundExtrude(radiiPoints16,15.621,7.8105,0,fn=30);
+                                    polyRoundExtrude(radiiPoints16,15.621,7.8105,0,fn=face_number);
                     }   
             }
             
@@ -183,7 +196,7 @@ module body()
                                 rotate([0,0,0])
                                     color(olive_drab)
                                         translate([0,0,0])
-                                            polyRoundExtrude(radiiPoints9,5.969,3,0,fn=30);
+                                            polyRoundExtrude(radiiPoints9,5.969,3,0,fn=face_number);
                                 radiiPoints10=[
                                     [0,0,13.4874],
                                     [65,0,0],
@@ -193,7 +206,7 @@ module body()
                                 rotate([0,0,0])
                                     color(olive_drab)
                                         translate([1.651,1.651,-1.651])
-                                            polyRoundExtrude(radiiPoints10,5.969,3,0,fn=30);
+                                            polyRoundExtrude(radiiPoints10,5.969,3,0,fn=face_number);
                                 translate([-1,26.9748,-10])
                                     color(olive_drab)
                                         cube([80, 20, 20]);
@@ -211,7 +224,7 @@ module body()
                                 rotate([0,0,0])
                                     color(olive_drab)
                                         translate([0,0,0])
-                                            polyRoundExtrude(radiiPoints11,5.969,3,0,fn=30);
+                                            polyRoundExtrude(radiiPoints11,5.969,3,0,fn=face_number);
                                 radiiPoints12=[
                                     [0,0,0],
                                     [65,0,0],
@@ -221,7 +234,7 @@ module body()
                             rotate([0,0,0])
                                 color(olive_drab)
                                     translate([0,1.651,-1.651])
-                                        polyRoundExtrude(radiiPoints12,5.969,3,0,fn=30);
+                                        polyRoundExtrude(radiiPoints12,5.969,3,0,fn=face_number);
                             translate([-1,26.9748,-10])
                                 color(olive_drab)
                                     cube([62.3918, 20, 20]);
@@ -238,7 +251,7 @@ module body()
                                 rotate([0,0,0])
                                     color(olive_drab)
                                         translate([0,0,0])
-                                            polyRoundExtrude(radiiPoints13,5.969,3,0,fn=30);
+                                            polyRoundExtrude(radiiPoints13,5.969,3,0,fn=face_number);
                                 radiiPoints14=[
                                     [0,0,0],
                                     [61.3918,0,0],
@@ -248,7 +261,7 @@ module body()
                                 rotate([0,0,0])
                                     color(olive_drab)
                                         translate([-1.651,1.651,-1.651])
-                                            polyRoundExtrude(radiiPoints14,5.969,3,0,fn=30);
+                                            polyRoundExtrude(radiiPoints14,5.969,3,0,fn=face_number);
                                 translate([0,26.9748,-10])
                                     color(olive_drab)
                                         cube([80, 20, 20]);
@@ -270,7 +283,7 @@ module body()
                             translate([30,0,49.5])
                                 color(olive_drab)
                                     translate([0,1.651,-1.651])
-                                        polyRoundExtrude(radiiPoints15,5.969,3,0,fn=30);
+                                        polyRoundExtrude(radiiPoints15,5.969,3,0,fn=face_number);
                         translate([70,-2,-75.7682])
                             color(olive_drab)
                                 cube([30, 30, 40.8686]);
@@ -298,7 +311,7 @@ module body()
                         rotate([90,0,-90])
                             color(olive_drab)
                                 translate([-126,-11.1252,-58.5])
-                                    polyRoundExtrude(radiiPoints17,141.478,0,0,fn=30);
+                                    polyRoundExtrude(radiiPoints17,141.478,0,0,fn=face_number);
                         radiiPoints18=[
                             [0,0,0],
                             [96.52,0,0],
@@ -308,11 +321,28 @@ module body()
                         rotate([90,0,-90])
                             color(olive_drab)
                                 translate([-127.9,-13.0252,-59.5])
-                                    polyRoundExtrude(radiiPoints18,145,0,0,fn=30);
+                                    polyRoundExtrude(radiiPoints18,145,0,0,fn=face_number);
                     }
             }
             
         rear_deck();
+            
+        module deck_objects()
+            {
+                difference()
+                    {
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([-4.5,-4.4,-15])
+                                    cube([62.738, 34.036, 13.3858]);
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([-2.5,-2.4,-17])
+                                    cube([62.738, 34.036, 13.3858]);
+                    }
+            }
+            
+        deck_objects();
             
     }
     
