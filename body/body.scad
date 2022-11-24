@@ -9,7 +9,7 @@ include </Users/isaiahkeating/Desktop/Cad/Round-Anything/polyround.scad>
 // extrudeWithRadius example
 //extrudeWithRadius(45,-10,-10,20)polygon(polyRound(radiiPoints,60));
 
-face_number = 10;//rendered at 7,8,10
+face_number = 10;
 $fn = face_number;//number of faces
 $fs = 2;//default segment length - filament/2
 $fa = 12;//minimum of degree per segment
@@ -36,7 +36,7 @@ module body()
                             rotate([90,0,90])
                                 color(brown)
                                     translate([0,0,0])
-                                        polyRoundExtrude(radiiPoints,44.704,5,5,fn=face_number);
+                                        polyRoundExtrude(radiiPoints,44.704,2,2,fn=face_number);
                         radiiPoints2=[
                             [-10   , 10.795, 0],
                             [43.561, 5     , 0],
@@ -51,7 +51,7 @@ module body()
                                 color(brown)
                                     translate([4.445,-22.352,0])
                                         cylinder(h = 20, r = 1.5, center = true);
-                     /*   radiiPoints19=[
+                        radiiPoints19=[
                             [0,0,0],
                             [96.52,0,0],
                             [96.52,26.67,13.335],
@@ -60,7 +60,7 @@ module body()
                         rotate([90,0,-90])
                             color(olive_drab)
                                 translate([-127.9,-13.0252,-59.5])
-                                    polyRoundExtrude(radiiPoints19,60,0,0,fn=face_number); */
+                                    polyRoundExtrude(radiiPoints19,60,0,0,fn=face_number);
                     }
             }
             
@@ -73,7 +73,6 @@ module body()
                         radiiPoints3=[
                             [0,0,0],
                             [34.417,0,0],
-                            [78.4225,100,50],
                             [120.65,6.35,0],
                             [132.334,6.35,0],
                             [132.334,50.8,0],
@@ -95,6 +94,10 @@ module body()
                             color(olive_drab)
                                 translate([-5,-25,-83])
                                     polyRoundExtrude(radiiPoints4,141.161,0,0,fn=face_number);
+                    rotate([90,0,90])
+                        color(olive_drab)
+                            translate([74,-38,-12.4195])
+                                cylinder(h = 150, r = 45.526198, center = true);
                     }
                     radiiPoints6=[
                         [0,0,0],
@@ -108,21 +111,10 @@ module body()
                         color(olive_drab)
                             translate([25,-25,-81.5])
                                 polyRoundExtrude(radiiPoints6,2,0,0,fn=face_number);
-                    radiiPoints7=[
-                        [0,0,0],
-                        [0,27.1526,0],
-                        [-13.716,27.1526,6.858],
-                        [-13.716,40.8686,0],
-                        [-53.1368,40.8686,0],
-                        [-30.988,0,0],
-                    ];
                     rotate([90,0,70])
                         color(olive_drab)
                             translate([17,-25,56])
-                                polyRoundExtrude(radiiPoints7,2,0,0,fn=face_number);
-                    //rotate([90,0,90])
-                        //translate([74,-38,-12.4195])
-                            //#cylinder(h = 145.161, r = 45.526198, center = true);//rear wheel well tool
+                                polyRoundExtrude(radiiPoints6,2,0,0,fn=face_number);
             }
             
         rear_panels();
@@ -132,20 +124,20 @@ module body()
                 difference()
                     {
                         radiiPoints5=[
-                            [0   , -20, 0],
-                            [40.911, -20     , 0],// changed X to render.....
-                            [49.911, 0     , 0],
-                            [55.7911, 64.5922 , 0],
-                            [55.7911, 84.5922 , 0],
-                            [-55.7911, 84.5922 , 0],
-                            [-55.7911     , 64.5922 , 0],
-                            [-49.911     , 0 , 0],
-                            [-40.911     , -20 , 0],// changed X to render.....
+                            [49.911     ,-20    ,0],
+                            [49.911     ,0      ,0],
+                            [55.7911    ,64.5922,0],
+                            [55.7911    ,95.5922,0],
+                            [-55.7911   ,95.5922,0],
+                            [-55.7911   ,64.5922,0],
+                            [-49.911    ,0      ,0],
+                            [-49.911    ,-20    ,0],
                         ];
                         rotate([0,0,0])
                             color(olive_drab)
                                 translate([0,0,0])
-                                    polyRoundExtrude(radiiPoints5,15.621,7.8105,0,fn=face_number);
+                                    polyRoundExtrude(radiiPoints5,15.621,7.8,0,fn=face_number);
+                                    //had to reduce slightly from half of thickness
                         translate([0,-20,0])
                             color(olive_drab)
                                 cube([120,40,40], center = true);
@@ -161,24 +153,23 @@ module body()
                                 translate([3.175,0,8])
                                     cylinder(h = 20, r = .635, center = true);
                         radiiPoints16=[
-                            [0   , -20, 0],
-                            [40.26, -20     , 0],// changed X to render.....
-                            [48.26, 0     , 0],
-                            [54.1401, 64.5922 , 0],
-                            [54.1401, 84.5922 , 0],
-                            [-54.1401, 84.5922 , 0],
-                            [-54.1401     , 64.5922 , 0],
-                            [-48.26     , 0 , 0],
-                            [-40.26     , -20 , 0],// changed X to render.....
+                            [48.26      ,-18    ,0],
+                            [48.26      ,0      ,0],
+                            [54.1401    ,63.5922,0],
+                            [54.1401    ,93.5922,0],
+                            [-54.1401   ,93.5922,0],
+                            [-54.1401   ,63.5922,0],
+                            [-48.26     ,0      ,0],
+                            [-48.26     ,-18    ,0],
                         ];
                         rotate([0,0,0])
                             color(olive_drab)
                                 translate([0,0,-1.651])
-                                    polyRoundExtrude(radiiPoints16,15.621,7.8105,0,fn=face_number);
+                                    polyRoundExtrude(radiiPoints16,15.621,7.8,0,fn=face_number);
                     }   
             }
             
-        translate([-12.5,-115,13])  
+        translate([-12.5,-115,12.9])
             hood();
             
         module front_fenders()
