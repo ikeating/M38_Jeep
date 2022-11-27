@@ -2,14 +2,18 @@
     Isaiah Keating
 */
 
-include </Users/isaiahkeating/Desktop/Cad/Round-Anything/polyround.scad>
+include <Round-Anything/polyround.scad>
+include <BOSL/constants.scad>
+use <BOSL/shapes.scad>
+use <BOSL/masks.scad>
+
 // polyRound example
 //linear_extrude(3)polygon(polyRound(radiiPoints,30));
 
 // extrudeWithRadius example
 //extrudeWithRadius(45,-10,-10,20)polygon(polyRound(radiiPoints,60));
 
-face_number = 10;
+face_number = 40;
 $fn = face_number;//number of faces
 $fs = 2;//default segment length - filament/2
 $fa = 12;//minimum of degree per segment
@@ -66,84 +70,108 @@ module body()
             
         drivers_seat();
             
-        module rear_panels()
+        module panels()
             {
+                module rear_panels()
+                    {
+                        difference()
+                            {
+                                radiiPoints3=[
+                                    [0,0,0],
+                                    [34.417,0,0],
+                                    [120.65,6.35,0],
+                                    [127.334,6.35,0],
+                                    [127.334,50.8,0],
+                                    [34.417,50.8,25],
+                                    [16.891,27.051,10],
+                                    [0,27.051,0],
+                                ];
+                                rotate([90,0,90])
+                                    color(olive_drab)
+                                        translate([-5,-25,-85])
+                                            polyRoundExtrude(radiiPoints3,2,0,0,fn=face_number);
+
+                                rotate([90,0,90])
+                                    color(olive_drab)
+                                        translate([74,-38,-12.4195])
+                                            cylinder(h = 150, r = 45.526198, center = true);
+                            }
+                    }
+                translate([143.175,0,0])
+                    rear_panels();
+                rear_panels();
+                module front_panels()
+                    {
+                        radiiPoints6=[
+                                [0,0,0],
+                                [0,27.1526,0],
+                                [-13.716,27.1526,6.858],
+                                [-13.716,40.8686,0],
+                                [-53.1368,40.8686,0],
+                                [-30.988,0,0],
+                        ];
+                        rotate([90,0,110])
+                            color(olive_drab)
+                                translate([24.4,-25,-81.6])
+                                    polyRoundExtrude(radiiPoints6,2,0,0,fn=face_number);
+                        rotate([90,0,70])
+                            color(olive_drab)
+                                translate([15.9,-25,56.24])
+                                    polyRoundExtrude(radiiPoints6,2,0,0,fn=face_number);
+                    }
                 difference()
                     {
-                        radiiPoints3=[
-                            [0,0,0],
-                            [34.417,0,0],
-                            [120.65,6.35,0],
-                            [132.334,6.35,0],
-                            [132.334,50.8,0],
-                            [34.417,50.8,25],
-                            [16.891,27.051,10],
-                            [0,27.051,0],
-                        ];
-                        rotate([90,0,90])
+                        front_panels();
+                        rotate([90,0,0])
                             color(olive_drab)
-                                translate([-5,-25,-85])
-                                    polyRoundExtrude(radiiPoints3,145.161,0,0,fn=face_number);
-                        radiiPoints4=[
-                            [-1,-1,0],
-                            [130.334,-1,0],
-                            [130.334,60,0],
-                            [-1,60,0],
-                        ];
-                        rotate([90,0,90])
-                            color(olive_drab)
-                                translate([-5,-25,-83])
-                                    polyRoundExtrude(radiiPoints4,141.161,0,0,fn=face_number);
-                    rotate([90,0,90])
-                        color(olive_drab)
-                            translate([74,-38,-12.4195])
-                                cylinder(h = 150, r = 45.526198, center = true);
+                                translate([-85,-25,-5])
+                                    cube([145.161,40.8686,10], center = false);
                     }
-                    radiiPoints6=[
-                        [0,0,0],
-                        [0,27.1526,0],
-                        [-13.716,27.1526,6.858],
-                        [-13.716,40.8686,0],
-                        [-53.1368,40.8686,0],
-                        [-30.988,0,0],
-                    ];
-                    rotate([90,0,110])
-                        color(olive_drab)
-                            translate([25,-25,-81.5])
-                                polyRoundExtrude(radiiPoints6,2,0,0,fn=face_number);
-                    rotate([90,0,70])
-                        color(olive_drab)
-                            translate([17,-25,56])
-                                polyRoundExtrude(radiiPoints6,2,0,0,fn=face_number);
+                module back()
+                    {
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([-12.4,122.335,3.56])
+                                    cuboid([145.161,10,44.45], fillet=5,
+                                    edges=EDGE_BK_LF+EDGE_BK_RT, $fn=face_number);
+                    }
+                back();
             }
             
-        rear_panels();
+        panels();
             
         module hood()
             {
+                module shape_1()
+                    {
+                        rotate([90,0,0])
+                            color(olive_drab)
+                                translate([0,7.8105,-32.2961])//up 7.8105
+                                    rounded_prismoid(size1=[111.5822,15.621],
+                                    size2=[99.822,15.621], h=64.5922, r=7.8105,
+                                    center=true, $fn = face_number);
+                        rotate([90,0,0])
+                            color(olive_drab)
+                                translate([0,(-3.90525+7.8105),-32.2961])
+                                    rounded_prismoid(size1=[111.5822,7.8105],
+                                    size2=[99.822,7.8105], h=64.5922, r=0,
+                                    center=true, $fn = face_number);
+                    }
                 difference()
                     {
-                        radiiPoints5=[
-                            [49.911     ,-20    ,0],
-                            [49.911     ,0      ,0],
-                            [55.7911    ,64.5922,0],
-                            [55.7911    ,95.5922,0],
-                            [-55.7911   ,95.5922,0],
-                            [-55.7911   ,64.5922,0],
-                            [-49.911    ,0      ,0],
-                            [-49.911    ,-20    ,0],
-                        ];
-                        rotate([0,0,0])
+                        shape_1();
+                        rotate([90,0,0])
                             color(olive_drab)
-                                translate([0,0,0])
-                                    polyRoundExtrude(radiiPoints5,15.621,7.8,0,fn=face_number);
-                                    //had to reduce slightly from half of thickness
-                        translate([0,-20,0])
+                                translate([0,(-1.651+7.8105),-32.2961])
+                                    rounded_prismoid(size1=[108.2802,15.621],//-3.302
+                                    size2=[96.52,15.621], h=64.60, r=7.8105,
+                                    center=true, $fn = face_number);
+                        rotate([90,0,0])
                             color(olive_drab)
-                                cube([120,40,40], center = true);
-                        translate([0,84.5922,0])
-                            color(olive_drab)
-                                cube([120,40,40], center = true);
+                                translate([0,(-5.55625+7.8105),-32.2961])
+                                    rounded_prismoid(size1=[108.2802,7.8105],
+                                    size2=[96.52,7.8105], h=64.60, r=0,
+                                    center=true, $fn = face_number);
                         rotate([0,0,90])
                             color(olive_drab)
                                 translate([27.8892,0,8])
@@ -152,21 +180,7 @@ module body()
                             color(olive_drab)
                                 translate([3.175,0,8])
                                     cylinder(h = 20, r = .635, center = true);
-                        radiiPoints16=[
-                            [48.26      ,-18    ,0],
-                            [48.26      ,0      ,0],
-                            [54.1401    ,63.5922,0],
-                            [54.1401    ,93.5922,0],
-                            [-54.1401   ,93.5922,0],
-                            [-54.1401   ,63.5922,0],
-                            [-48.26     ,0      ,0],
-                            [-48.26     ,-18    ,0],
-                        ];
-                        rotate([0,0,0])
-                            color(olive_drab)
-                                translate([0,0,-1.651])
-                                    polyRoundExtrude(radiiPoints16,15.621,7.8,0,fn=face_number);
-                    }   
+                    }
             }
             
         translate([-12.5,-115,12.9])
@@ -337,6 +351,6 @@ module body()
             
     }
     
-//body();
-    
+body();
+
 ///////////////////////////////////////////////////////////////////////////////////////
