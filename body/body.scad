@@ -13,7 +13,7 @@ use <BOSL/masks.scad>
 // extrudeWithRadius example
 //extrudeWithRadius(45,-10,-10,20)polygon(polyRound(radiiPoints,60));
 
-face_number = 40;
+face_number = 10;
 $fn = face_number;//number of faces
 $fs = 2;//default segment length - filament/2
 $fa = 12;//minimum of degree per segment
@@ -30,12 +30,12 @@ module body()
                 difference()
                     {
                         radiiPoints=[
-                            [0     , -5    , 0 ],
-                            [66.04 , -5    ,0  ],
-                            [66.04 , 66.04 ,1  ],
-                            [62.484, 66.04 , 1 ],
-                            [31.75 , 10    , 50],
-                            [0     , 10.795, 5 ],
+                            [0     ,-5    ,0    ],
+                            [66.04 ,-5    ,0    ],
+                            [66.04 ,66.04 ,1    ],
+                            [62.484,66.04 ,1    ],
+                            [31.75 ,10    ,50   ],
+                            [0     ,10.795,5    ],
                         ];
                             rotate([90,0,90])
                                 color(brown)
@@ -56,10 +56,10 @@ module body()
                                     translate([4.445,-22.352,0])
                                         cylinder(h = 20, r = 1.5, center = true);
                         radiiPoints19=[
-                            [0,0,0],
-                            [96.52,0,0],
-                            [96.52,26.67,13.335],
-                            [0,26.67,0],
+                            [0      ,0      ,0      ],
+                            [96.52  ,0      ,0      ],
+                            [96.52  ,26.67  ,13.335 ],
+                            [0      ,26.67  ,0      ],
                         ];
                         rotate([90,0,-90])
                             color(olive_drab)
@@ -67,8 +67,8 @@ module body()
                                     polyRoundExtrude(radiiPoints19,60,0,0,fn=face_number);
                     }
             }
-            
-        drivers_seat();
+        translate([0,-0.8,-1.1])
+            drivers_seat();
             
         module panels()
             {
@@ -77,14 +77,14 @@ module body()
                         difference()
                             {
                                 radiiPoints3=[
-                                    [0,0,0],
-                                    [34.417,0,0],
-                                    [120.65,6.35,0],
-                                    [127.334,6.35,0],
-                                    [127.334,50.8,0],
-                                    [34.417,50.8,25],
-                                    [16.891,27.051,10],
-                                    [0,27.051,0],
+                                    [0      ,0      ,0  ],
+                                    [34.417 ,0      ,0  ],
+                                    [120.65 ,6.35   ,0  ],
+                                    [127.334,6.35   ,0  ],
+                                    [127.334,50.8   ,0  ],
+                                    [34.417 ,50.8   ,25 ],
+                                    [16.891 ,27.051 ,10 ],
+                                    [0      ,27.051 ,0  ],
                                 ];
                                 rotate([90,0,90])
                                     color(olive_drab)
@@ -103,12 +103,12 @@ module body()
                 module front_panels()
                     {
                         radiiPoints6=[
-                                [0,0,0],
-                                [0,27.1526,0],
-                                [-13.716,27.1526,6.858],
-                                [-13.716,40.8686,0],
-                                [-53.1368,40.8686,0],
-                                [-30.988,0,0],
+                                [0          ,0      ,0      ],
+                                [0          ,27.1526,0      ],
+                                [-13.716    ,27.1526,6.858  ],
+                                [-13.716    ,40.8686,0      ],
+                                [-53.1368   ,40.8686,0      ],
+                                [-30.988    ,0      ,0      ],
                         ];
                         rotate([90,0,110])
                             color(olive_drab)
@@ -129,11 +129,26 @@ module body()
                     }
                 module back()
                     {
-                        rotate([0,0,0])
-                            color(olive_drab)
-                                translate([-12.4,122.335,3.56])
-                                    cuboid([145.161,10,44.45], fillet=5,
-                                    edges=EDGE_BK_LF+EDGE_BK_RT, $fn=face_number);
+                        difference()
+                            {
+                                rotate([0,0,0])
+                                    color(olive_drab)
+                                        translate([-12.4,122.335,3.56])
+                                            cuboid([145.161,10,44.45], fillet=5,
+                                            edges=EDGE_BK_LF+EDGE_BK_RT, $fn=face_number);
+                                rotate([0,0,0])
+                                    color(olive_drab)
+                                        translate([-12.4,(122.335+3.99),3.56])
+                                            cube([130.175,2.032,50], center = true);
+                                rotate([0,0,0])
+                                    color(olive_drab)
+                                        translate([-12.4,(122.335),24.44])
+                                            cube([130.175,20,20], center = true);
+                                rotate([0,0,0])
+                                    color(olive_drab)
+                                        translate([-12.4,(122.335+3.99),-18.675])
+                                            prismoid(size1=[125.73,30], size2=[119.38,30], h=31.242);
+                            }
                     }
                 back();
             }
@@ -315,7 +330,7 @@ module body()
                         ];
                         rotate([90,0,-90])
                             color(olive_drab)
-                                translate([-126,-11.1252,-58.5])
+                                translate([-125.2,-12.2252,-58.5])
                                     polyRoundExtrude(radiiPoints17,141.478,0,0,fn=face_number);
                         radiiPoints18=[
                             [0,0,0],
@@ -325,7 +340,7 @@ module body()
                         ];
                         rotate([90,0,-90])
                             color(olive_drab)
-                                translate([-127.9,-13.0252,-59.5])
+                                translate([-127.1,-14.1252,-59.5])
                                     polyRoundExtrude(radiiPoints18,145,0,0,fn=face_number);
                     }
             }
@@ -338,11 +353,11 @@ module body()
                     {
                         rotate([0,0,0])
                             color(olive_drab)
-                                translate([-4.5,-4.4,-15])
+                                translate([-4.5,-4.4,-16.1])
                                     cube([62.738, 34.036, 13.3858]);
                         rotate([0,0,0])
                             color(olive_drab)
-                                translate([-2.5,-2.4,-17])
+                                translate([-2.5,-2.4,-17.1])
                                     cube([62.738, 34.036, 13.3858]);
                     }
             }
