@@ -106,9 +106,11 @@ module body()
                                 [0          ,0      ,0      ],
                                 [0          ,27.1526,0      ],
                                 [-13.716    ,27.1526,6.858  ],
-                                [-13.716    ,40.8686,0      ],
-                                [-53.1368   ,40.8686,0      ],
-                                [-30.988    ,0      ,0      ],
+                                [-13.716    ,39.37  ,0      ],
+                                [-53.1368   ,39.37  ,0      ],
+                                [-29        ,2      ,0      ],//x -30.988
+                                [-11.5      ,2      ,0      ],
+                                [-11.5      ,0      ,0      ],
                         ];
                         rotate([90,0,110])
                             color(olive_drab)
@@ -209,8 +211,8 @@ module body()
                             {
                                 radiiPoints9=[
                                     [0,0,13.4874],
-                                    [61.3918,0,0],
-                                    [61.3918,36.9748,0],//add 10 to Y
+                                    [71.3918,0,0],//add 10 to x for problem
+                                    [71.3918,36.9748,0],//add 10 to Y, add 10 to x for problem
                                     [0,36.9748,0],//add 10 to Y
                                 ];
                                 rotate([0,0,0])
@@ -230,16 +232,20 @@ module body()
                                 translate([-1,26.9748,-10])
                                     color(olive_drab)
                                         cube([80, 20, 20]);
+                                rotate([0,120,0])
+                                    translate([-40,-10,49.50])
+                                        color(olive_drab)
+                                            cube([20, 50, 20]);
                             }
                         rotate([0,60,0])
                             translate([24,0,49.5])
                                 difference()
                             {
                                 radiiPoints11=[
-                                    [0,0,0,],
+                                    [-10,0,0,],//added -10 to fix problem
                                     [61.3918,0,0],
                                     [61.3918,36.9748,0],//add 10 to Y
-                                    [0,36.9748,0],//add 10 to Y
+                                    [-10,36.9748,0],//add 10 to Y, added -10 to fix problem
                                 ];
                                 rotate([0,0,0])
                                     color(olive_drab)
@@ -253,11 +259,15 @@ module body()
                                 ];
                             rotate([0,0,0])
                                 color(olive_drab)
-                                    translate([0,1.651,-1.651])
+                                    translate([-10,1.651,-1.651])//0,1.651,-1.651
                                         polyRoundExtrude(radiiPoints12,5.969,3,0,fn=face_number);
                             translate([-1,26.9748,-10])
                                 color(olive_drab)
                                     cube([62.3918, 20, 20]);
+                                rotate([0,-30,0])
+                                    translate([-16.04,-10,-10])
+                                        color(olive_drab)
+                                            cube([20, 50, 20]);
                             }
                         translate([37.15,0,-34.8996])
                             difference()
@@ -272,16 +282,6 @@ module body()
                                     color(olive_drab)
                                         translate([0,0,0])
                                             polyRoundExtrude(radiiPoints13,5.969,3,0,fn=face_number);
-                                radiiPoints14=[
-                                    [0,0,0],
-                                    [61.3918,0,0],
-                                    [61.3918,36.9748,0],//add 10 to Y
-                                    [0,36.9748,0],//add 10 to Y
-                                ];
-                                rotate([0,0,0])
-                                    color(olive_drab)
-                                        translate([-1.651,1.651,-1.651])
-                                            polyRoundExtrude(radiiPoints14,5.969,3,0,fn=face_number);
                                 translate([0,26.9748,-10])
                                     color(olive_drab)
                                         cube([80, 20, 20]);
@@ -307,9 +307,18 @@ module body()
                         translate([70,-2,-75.7682])
                             color(olive_drab)
                                 cube([30, 30, 40.8686]);
+                        radiiPoints14=[
+                            [0,0,0],
+                            [61.3918,0,0],
+                            [61.3918,36.9748,0],//add 10 to Y
+                            [0,36.9748,0],//add 10 to Y
+                        ];
+                        rotate([0,0,0])
+                            color(olive_drab)
+                                translate([35.499,1.651,-36.5506])
+                                    polyRoundExtrude(radiiPoints14,5.969,3,0,fn=face_number);
                     }
             }
-        
         rotate([0,0,90])
             translate([-113,-63,7])
                 front_fenders();
