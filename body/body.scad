@@ -7,6 +7,8 @@ include <BOSL/constants.scad>
 use <BOSL/shapes.scad>
 use <BOSL/masks.scad>
 
+//center of body X=(-12.239) or 12.4?
+
 // polyRound example
 //linear_extrude(3)polygon(polyRound(radiiPoints,30));
 
@@ -17,6 +19,7 @@ face_number = 10;
 $fn = face_number;//number of faces
 $fs = 2;//default segment length - filament/2
 $fa = 12;//minimum of degree per segment
+
 brown =             "#4e2207";//    X-9
 olive_drab =        "#404a13";//    XF-62
 orange =            "#ff7f00";//    X-6
@@ -150,6 +153,9 @@ module body()
                                     color(olive_drab)
                                         translate([-12.4,(122.335+3.99),-18.675])
                                             prismoid(size1=[125.73,30], size2=[119.38,30], h=31.242);
+                                color(olive_drab)
+                                    translate([-12.239,95.989,20])//1.9 thick
+                                        cube([57.16,54.62,19.812], center = true);//subtract 3.8
                             }
                     }
                 back();
@@ -294,10 +300,10 @@ module body()
                     {
                         fender();
                         radiiPoints15=[
-                            [0,0,0],
-                            [65,0,0],
-                            [65,36.9748,0],//add 10 to Y
-                            [0,36.9748,0],//add 10 to Y
+                            [0  ,0      ,0],
+                            [65 ,0      ,0],
+                            [65 ,36.9748,0],//add 10 to Y
+                            [0  ,36.9748,0],//add 10 to Y
                         ];
                         rotate([0,60,0])
                             translate([30,0,49.5])
@@ -308,10 +314,10 @@ module body()
                             color(olive_drab)
                                 cube([30, 30, 40.8686]);
                         radiiPoints14=[
-                            [0,0,0],
-                            [61.3918,0,0],
+                            [0      ,0      ,0],
+                            [61.3918,0      ,0],
                             [61.3918,36.9748,0],//add 10 to Y
-                            [0,36.9748,0],//add 10 to Y
+                            [0      ,36.9748,0],//add 10 to Y
                         ];
                         rotate([0,0,0])
                             color(olive_drab)
@@ -332,25 +338,37 @@ module body()
                 difference()
                     {
                         radiiPoints17=[
-                            [0,0,0],
-                            [96.52,0,0],
-                            [96.52,26.67,13.335],
-                            [0,26.67,0],
+                            [0      ,0      ,0      ],
+                            [96.52  ,0      ,0      ],
+                            [96.52  ,26.67  ,13.335 ],
+                            [0      ,26.67  ,0      ],
                         ];
                         rotate([90,0,-90])
                             color(olive_drab)
                                 translate([-125.2,-12.2252,-58.5])
                                     polyRoundExtrude(radiiPoints17,141.478,0,0,fn=face_number);
                         radiiPoints18=[
-                            [0,0,0],
-                            [96.52,0,0],
-                            [96.52,26.67,13.335],
-                            [0,26.67,0],
+                            [0      ,0      ,0      ],
+                            [96.52  ,0      ,0      ],
+                            [96.52  ,26.67  ,13.335 ],
+                            [0      ,26.67  ,0      ],
                         ];
                         rotate([90,0,-90])
                             color(olive_drab)
                                 translate([-127.1,-14.1252,-59.5])
                                     polyRoundExtrude(radiiPoints18,145,0,0,fn=face_number);
+                        color(olive_drab)
+                            translate([-12.239,95.989,20])//1.9 thick
+                                cube([57.16,54.62,19.812], center = true);//subtract 3.8
+                    }
+                difference()
+                    {
+                        color(olive_drab)
+                            translate([-12.239,95.989,24.34])
+                                cube([60.96,58.42,19.812], center = true);
+                        color(olive_drab)
+                            translate([-12.239,95.989,22.44])//1.9 thick
+                                cube([57.16,54.62,19.812], center = true);//subtract 3.8
                     }
             }
             

@@ -6,16 +6,21 @@ include <D4_grill/grill.scad>
 
 include <A13_winch_cable/A13_winch_cable.scad>
 
-include <body/body.scad>
-$fn = 10;
+//include <body/body.scad>
+
+//$fn = 10;
+
+translate([12.4,90,-5])
+import ("body/body60.stl");
+
 rotate([90,0,0])
-    translate([-2.5,-12,35.033])
+    translate([0,-12,35.033])
         A13_winch_cable();
         
 rotate([90,0,0])
-    translate([-2.5,0,22])
+    translate([0,0,22])
         grill();
 
-translate([10,90,-5])
+*translate([12.4,90,-5])
     body();
 ///////////////////////////////////////////////////////////////////////////////
